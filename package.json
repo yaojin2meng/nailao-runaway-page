@@ -1,0 +1,16 @@
+{
+  "name": "runaway-page",
+  "version": "1.0.0",
+  "private": true,
+  "description": "跑路公告页 + 永远返回 200 的假 /v1 接口（Cloudflare Workers）",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.20.0"
+  }
+}

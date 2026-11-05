@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奶酪公益站 · 闭站跑路通知</title>
+<meta name="description" content="对不起，我们跑路啦。奶酪公益站已闭站，推荐付费站：castorice（https://castorice.shop）。">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#faf4de" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b0e04" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="奶酪公益站">
+<meta property="og:title" content="奶酪公益站 · 闭站跑路通知">
+<meta property="og:description" content="对不起，我们跑路啦，推荐付费站：castorice（https://castorice.shop）。">
+<meta property="og:image" content="/logo.png">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<style>
+  /* ========== 主题变量（奶酪公益站同款奶油黄） ========== */
+  :root {
+    color-scheme: light dark;
+    --bg: #faf4de;
+    --fg: #311911;
+    --card: #fdf8e9;
+    --primary: #f4c352;
+    --primary-fg: #190f0b;
+    --secondary: #f8e5b1;
+    --muted: #f4ecd2;
+    --muted-fg: #826a52;
+    --border: #e7d9b6;
+    --accent: #e4512c;
+    --accent-2: #f59145;
+    --ok: #2f8a5b;
+
+    --shadow: 0 1px 2px rgba(49, 25, 17, 0.05), 0 18px 40px -24px rgba(49, 25, 17, 0.42);
+    --shadow-lg: 0 2px 6px rgba(49, 25, 17, 0.06), 0 34px 64px -34px rgba(49, 25, 17, 0.5);
+    --glow-1: rgba(244, 195, 82, 0.72);
+    --glow-2: rgba(245, 145, 69, 0.4);
+    --grid: rgba(49, 25, 17, 0.085);
+
+    --term-bg: #2a180c;
+    --term-fg: #f7e9cb;
+
+    --radius: 14px;
+    --wrap: 860px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1b0e04;
+      --fg: #faf4de;
+      --card: #241306;
+      --primary: #fbc750;
+      --primary-fg: #1b0e04;
+      --secondary: #493319;
+      --muted: #2c1a0a;
+      --muted-fg: #bd9c74;
+      --border: #3b2410;
+      --accent: #ff8a63;
+      --accent-2: #f59145;
+      --ok: #7bd6a4;
+
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 22px 46px -26px rgba(0, 0, 0, 0.9);
+      --shadow-lg: 0 2px 8px rgba(0, 0, 0, 0.5), 0 36px 70px -34px rgba(0, 0, 0, 1);
+      --glow-1: rgba(251, 199, 80, 0.24);
+      --glow-2: rgba(245, 145, 69, 0.16);
+      --grid: rgba(250, 244, 222, 0.09);
+
+      --term-bg: #120801;
+      --term-fg: #f3e3c3;
+    }
+  }
+
+  /* ========== 基础 ========== */
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; padding: 0; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+      "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* 极光光晕 */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -14% -12% auto -12%;
+    height: 76vh;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 58% 52% at 24% 14%, var(--glow-1) 0%, transparent 70%),
+      radial-gradient(ellipse 48% 44% at 78% 8%, var(--glow-2) 0%, transparent 72%),
+      radial-gradient(ellipse 44% 38% at 52% 92%, var(--glow-1) 0%, transparent 74%);
+    animation: aurora 20s ease-in-out infinite;
+  }
+
+  /* 点阵网格 */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: radial-gradient(circle at center, var(--grid) 1px, transparent 1px);
+    background-size: 2.25rem 2.25rem;
+    -webkit-mask-image: radial-gradient(ellipse 62% 52% at 50% 18%, #000 15%, transparent 100%);
+    mask-image: radial-gradient(ellipse 62% 52% at 50% 18%, #000 15%, transparent 100%);
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; }
+  ::selection { background: var(--primary); color: var(--primary-fg); }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mono {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+      "Liberation Mono", monospace;
+  }
+
+  /* ========== 导航 ========== */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 20px 0 6px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+  }
+
+  .brand img {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    object-fit: cover;
+    background: var(--secondary);
+    box-shadow: 0 2px 10px -3px rgba(49, 25, 17, 0.45);
+    flex: none;
+  }
+
+  .brand b {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .brand em {
+    display: block;
+    font-style: normal;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--muted-fg);
+    line-height: 1.3;
+  }
+
+  .ghost-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: none;
+    padding: 7px 13px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted-fg);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: color 0.18s, border-color 0.18s, transform 0.18s;
+  }
+
+  .ghost-link:hover {
+    color: var(--fg);
+    border-color: var(--primary);
+    transform: translateY(-1px);
+  }
+
+  .ghost-link svg { width: 12px; height: 12px; opacity: 0.75; }
+
+  /* ========== Hero ========== */
+  main { flex: 1; }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    align-items: center;
+    padding: 30px 0 6px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px 6px 11px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--fg);
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d33b36;
+    box-shadow: 0 0 0 3px rgba(211, 59, 54, 0.2);
+    animation: pulse 2.6s ease-in-out infinite;
+    flex: none;
+  }
+
+  h1 {
+    margin-top: 18px;
+    font-size: clamp(2.1rem, 6.2vw, 3rem);
+    font-weight: 800;
+    line-height: 1.14;
+    letter-spacing: -0.03em;
+  }
+
+  h1 .accent {
+    background: linear-gradient(100deg, var(--primary) 0%, var(--accent-2) 52%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lead {
+    margin-top: 15px;
+    max-width: 44ch;
+    font-size: 15.5px;
+    color: var(--muted-fg);
+    text-wrap: pretty;
+  }
+
+  .lead strong {
+    color: var(--fg);
+    font-weight: 700;
+  }
+
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .stats div { min-width: 0; }
+
+  .stats dt {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-fg);
+  }
+
+  .stats dd {
+    margin-top: 2px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-art { display: flex; justify-content: center; }
+
+  .hero-art svg {
+    width: min(248px, 60vw);
+    height: auto;
+    overflow: visible;
+  }
+
+  .sign-group {
+    transform-box: view-box;
+    transform-origin: 120px 30px;
+    animation: swing 6s ease-in-out infinite;
+  }
+
+  @media (min-width: 800px) {
+    .hero {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 10px;
+      padding: 42px 0 10px;
+    }
+    .hero-art { justify-content: flex-end; }
+    .hero-art svg { width: clamp(248px, 26vw, 320px); }
+  }
+
+  /* ========== 卡片通用 ========== */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .card {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+  }
+
+  /* ========== 告别信 ========== */
+  .letter {
+    margin-top: 30px;
+    padding: 26px;
+    overflow: hidden;
+  }
+
+  .letter::after {
+    content: "";
+    position: absolute;
+    top: -90px;
+    right: -80px;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 195, 82, 0.34), transparent 68%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .letter-head {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+  }
+
+  .seal {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    flex: none;
+    font-size: 19px;
+    line-height: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    transform: rotate(-6deg);
+  }
+
+  .letter h2 {
+    margin-top: 5px;
+    font-size: clamp(1.3rem, 4.2vw, 1.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+  }
+
+  .letter-body {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    font-size: 15px;
+    color: var(--fg);
+  }
+
+  .letter-body p { line-height: 1.95; text-wrap: pretty; }
+
+  .letter-body p:first-child { font-size: 15.5px; }
+
+  .sign {
+    position: relative;
+    z-index: 1;
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .sign span { font-size: 12.5px; color: var(--muted-fg); }
+
+  .sign b {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  /* ========== 推荐站 ========== */
+  .promo {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin-top: 18px;
+    padding: 22px;
+    background:
+      linear-gradient(135deg, rgba(244, 195, 82, 0.2), rgba(245, 145, 69, 0.07)),
+      var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.24s var(--ease), border-color 0.24s, box-shadow 0.24s;
+  }
+
+  .promo::after {
+    content: "";
+    position: absolute;
+    right: -60px;
+    bottom: -80px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 195, 82, 0.42), transparent 70%);
+    pointer-events: none;
+  }
+
+  .promo:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .promo-head {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .promo-head .kicker {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-fg);
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 9px;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--primary-fg);
+    background: var(--primary);
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .tag.ok {
+    color: var(--ok);
+    background: transparent;
+    border: 1px solid currentColor;
+  }
+
+  .promo-row {
+    position: relative;
+    z-index: 1;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .promo-name {
+    font-size: clamp(1.45rem, 5vw, 1.8rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  .promo-url {
+    margin-top: 2px;
+    font-size: 13px;
+    color: var(--muted-fg);
+    word-break: break-all;
+  }
+
+  .promo-note {
+    position: relative;
+    z-index: 1;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--muted-fg);
+  }
+
+  /* ========== 按钮 ========== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 11px 20px;
+    font-size: 14.5px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--primary-fg);
+    background: var(--primary);
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: filter 0.18s, transform 0.18s, background 0.18s, border-color 0.18s;
+  }
+
+  .btn:hover { filter: brightness(1.06); }
+  .btn:active { transform: translateY(1px); }
+
+  .btn svg { width: 14px; height: 14px; flex: none; }
+
+  .btn.ghost {
+    color: var(--fg);
+    background: transparent;
+    border-color: var(--border);
+  }
+
+  .btn.ghost:hover {
+    color: var(--fg);
+    border-color: var(--primary);
+    background: var(--secondary);
+    filter: none;
+  }
+
+  .btn[disabled] { opacity: 0.6; cursor: progress; }
+
+  /* ========== API 面板 ========== */
+  .panel {
+    margin-top: 18px;
+    padding: 22px;
+  }
+
+  .panel-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .panel-head h2 {
+    margin-top: 5px;
+    font-size: clamp(1.15rem, 3.8vw, 1.35rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+  }
+
+  .panel-hint {
+    margin-top: 10px;
+    font-size: 13.5px;
+    color: var(--muted-fg);
+    text-wrap: pretty;
+  }
+
+  .field {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px 12px;
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .field-label {
+    grid-column: 1 / -1;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted-fg);
+  }
+
+  .field code {
+    font-size: 13px;
+    font-weight: 700;
+    word-break: break-all;
+    min-width: 0;
+  }
+
+  .copy {
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted-fg);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.16s, background 0.16s, border-color 0.16s;
+    white-space: nowrap;
+  }
+
+  .copy:hover {
+    color: var(--fg);
+    border-color: var(--primary);
+  }
+
+  .copy.done {
+    color: var(--primary-fg);
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  /* 终端输出 */
+  .console {
+    margin-top: 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--term-bg);
+    border: 1px solid rgba(49, 25, 17, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .console[hidden] { display: none; }
+
+  .console-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .status {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #9ae6b8;
+  }
+
+  .status.err { color: #ff9a8f; }
+
+  .console-bar .meta {
+    margin-left: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: rgba(247, 233, 203, 0.55);
+  }
+
+  .console pre {
+    max-height: 260px;
+    overflow: auto;
+    padding: 13px 14px;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--term-fg);
+    white-space: pre-wrap;
+    word-break: break-word;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .console pre::-webkit-scrollbar { width: 8px; height: 8px; }
+  .console pre::-webkit-scrollbar-thumb {
+    background: rgba(247, 233, 203, 0.22);
+    border-radius: 8px;
+  }
+
+  /* 接口一览 */
+  .rows { margin-top: 18px; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 6px 12px;
+    padding: 14px 0;
+    border-top: 1px dashed var(--border);
+  }
+
+  .row .path {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12.5px;
+    font-weight: 700;
+    word-break: break-all;
+    min-width: 0;
+  }
+
+  .row .path i {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 1px 6px;
+    font-style: normal;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--muted-fg);
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    vertical-align: 1px;
+  }
+
+  .row .val {
+    grid-column: 1 / -1;
+    padding: 9px 11px;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--fg);
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    word-break: break-word;
+  }
+
+  .row .note {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    color: var(--muted-fg);
+    text-wrap: pretty;
+  }
+
+  .chips {
+    grid-column: 1 / -1;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .chips li {
+    padding: 3px 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11.5px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    word-break: break-all;
+  }
+
+  /* ========== 页脚 ========== */
+  footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    padding: 30px 0 26px;
+    font-size: 12.5px;
+    color: var(--muted-fg);
+  }
+
+  footer .sep { opacity: 0.4; }
+
+  footer a {
+    border-bottom: 1px solid currentColor;
+    opacity: 0.85;
+    transition: color 0.16s, opacity 0.16s;
+  }
+
+  footer a:hover { color: var(--fg); opacity: 1; }
+
+  /* ========== 提示条 ========== */
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    z-index: 20;
+    transform: translate(-50%, 14px);
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-fg);
+    background: var(--primary);
+    border-radius: 999px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s, transform 0.28s var(--ease);
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  /* ========== 动效 ========== */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  .js .reveal.in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    transition-delay: var(--d, 0s);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes aurora {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(2.4%, -3%) scale(1.06); }
+    66% { transform: translate(-2.4%, 2.4%) scale(0.97); }
+  }
+
+  @keyframes swing {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.25; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+
+  .tw {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: twinkle 3.4s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .js .reveal { opacity: 1; transform: none; }
+  }
+
+  /* ========== 响应式 ========== */
+  @media (max-width: 560px) {
+    .wrap { padding: 0 16px; }
+    .hero { padding-top: 22px; }
+    .letter { padding: 22px 18px; }
+    .panel { padding: 18px 16px; }
+    .promo { padding: 18px; }
+    .promo-row { gap: 12px; }
+    .promo-row .btn { width: 100%; }
+    .stats { gap: 10px 18px; }
+    .hero-art { margin-top: 4px; }
+    .hero-art svg { width: min(200px, 54vw); }
+    footer { padding: 24px 0 22px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <a class="brand" href="/" aria-label="奶酪公益站">
+        <img src="/logo.png" alt="奶酪公益站" width="34" height="34" decoding="async">
+        <span>
+          <b>奶酪公益站</b>
+          <em>nailao.biz</em>
+        </span>
+      </a>
+      <a class="ghost-link" href="https://castorice.shop" target="_blank" rel="noopener noreferrer">
+        castorice
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+      </a>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div>
+          <span class="badge reveal" style="--d:0s"><span class="dot"></span>站点已闭站 · 全体跑路</span>
+
+          <h1 class="reveal" style="--d:.05s">奶酪公益站<br><span class="accent">跑路通知</span></h1>
+
+          <p class="lead reveal" style="--d:.1s"><strong>对不起，我们跑路啦</strong> —— 这次是真的。感谢一路相伴的每一位宝宝，剩下的故事都写进下面这封信里了。</p>
+
+          <dl class="stats reveal" style="--d:.15s">
+            <div>
+              <dt>建站</dt>
+              <dd class="mono">2026.08.17</dd>
+            </div>
+            <div>
+              <dt>营业</dt>
+              <dd><span class="mono" id="days">—</span> 天</dd>
+            </div>
+            <div>
+              <dt>收到的赞助</dt>
+              <dd class="mono">¥ 0</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-art reveal" style="--d:.12s" aria-hidden="true">
+          <svg viewBox="0 0 240 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="120" cy="199" rx="66" ry="7" fill="#311911" opacity="0.1"/>
+
+            <g class="sign-group">
+              <circle cx="120" cy="30" r="4.6" fill="#553222"/>
+              <path d="M120 35 L87 70" stroke="#a2826a" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M120 35 L153 70" stroke="#a2826a" stroke-width="2.6" stroke-linecap="round"/>
+
+              <rect x="50" y="68" width="140" height="88" rx="18" fill="#f4cb5e" stroke="#553222" stroke-width="3.5"/>
+              <rect x="59" y="77" width="122" height="70" rx="12" fill="none" stroke="#553222" stroke-width="2" stroke-dasharray="7 7" opacity="0.2"/>
+
+              <ellipse cx="73" cy="86" rx="6.5" ry="5" fill="#e0aa3d"/>
+              <ellipse cx="177" cy="142" rx="7" ry="5.4" fill="#e0aa3d"/>
+              <ellipse cx="67" cy="138" rx="4.6" ry="3.5" fill="#e0aa3d"/>
+
+              <text x="120" y="116" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="25" font-weight="800" letter-spacing="2.4" fill="#553222">CLOSED</text>
+              <text x="120" y="137" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" letter-spacing="3" fill="#553222" opacity="0.6">已闭站 · 跑路中</text>
+            </g>
+
+            <g fill="#e4a83c">
+              <g transform="translate(33 64)"><path class="tw" d="M0 -9 Q1.6 -1.6 9 0 Q1.6 1.6 0 9 Q-1.6 1.6 -9 0 Q-1.6 -1.6 0 -9 Z"/></g>
+              <g transform="translate(208 76)"><path class="tw" style="animation-delay:.7s" d="M0 -6.5 Q1.2 -1.2 6.5 0 Q1.2 1.2 0 6.5 Q-1.2 1.2 -6.5 0 Q-1.2 -1.2 0 -6.5 Z"/></g>
+              <g transform="translate(52 172)"><path class="tw" style="animation-delay:1.3s" d="M0 -5 Q.9 -.9 5 0 Q.9 .9 0 5 Q-.9 .9 -5 0 Q-.9 -.9 0 -5 Z"/></g>
+              <g transform="translate(194 178)"><path class="tw" style="animation-delay:1.9s" d="M0 -7 Q1.3 -1.3 7 0 Q1.3 1.3 0 7 Q-1.3 1.3 -7 0 Q-1.3 -1.3 0 -7 Z"/></g>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 告别信 -->
+      <article class="letter card reveal">
+        <div class="letter-head">
+          <span class="seal" aria-hidden="true">🧀</span>
+          <div>
+            <div class="eyebrow">致每一位宝宝</div>
+            <h2>这次，是真的要说再见了</h2>
+          </div>
+        </div>
+
+        <div class="letter-body">
+          <p>要和各位宝宝说再见啦。虽然很不舍，但奶酪公益站这次是真的跑路了。不知道你是在哪遇见我们的呢？</p>
+          <p>其实我们的离开，在开站之时便已注定。奶酪目前没有收到过一分钱的赞助，也没有通过广告（推广）获取过一分钱的利润。严重的收支不平衡，最终把我们推到了这里。当然这不是卖惨，也不是求赞助 —— 我们始终认为，一旦收费，便违背了一开始成立的初衷。</p>
+          <p>这一路走来遇到过很多问题：曾短暂闭站，也曾真正做到几乎不限量使用；随着人数增加，注册门槛也一次次提高。我们做了不少草台班子的事，也为了收拾这些烂摊子成长了许多。</p>
+          <p>总之再见啦。或许有一日我们会再相见，希望那天，你还会选择奶酪公益站。</p>
+        </div>
+
+        <div class="sign">
+          <span>—— 爱你们的站长</span>
+          <b>奶油</b>
+        </div>
+      </article>
+
+      <!-- 推荐站 -->
+      <a class="promo reveal" href="https://castorice.shop" target="_blank" rel="noopener noreferrer">
+        <div class="promo-head">
+          <span class="kicker">推荐付费站</span>
+          <span class="tag">推荐</span>
+        </div>
+        <div class="promo-row">
+          <div>
+            <div class="promo-name">castorice</div>
+            <div class="promo-url mono">https://castorice.shop</div>
+          </div>
+          <span class="btn">
+            前往 castorice
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+          </span>
+        </div>
+        <p class="promo-note">我们跑路之后，站长在这里继续营业：稳定、付费、有人维护。</p>
+      </a>
+
+      <!-- API 现状 -->
+      <section class="panel card reveal">
+        <div class="panel-head">
+          <div>
+            <div class="eyebrow">API 现状</div>
+            <h2>接口还活着，只是现在只会说一句话</h2>
+          </div>
+          <span class="tag ok">全部 200</span>
+        </div>
+
+        <p class="panel-hint">不校验任何 key，Authorization / x-api-key 随便填。点下面的按钮可以当场验证 —— 它真的只会回这一句。</p>
+
+        <div class="field">
+          <span class="field-label">Base URL</span>
+          <code id="base-url" class="mono">/v1</code>
+          <button class="copy" type="button" data-target="base-url">复制</button>
+        </div>
+
+        <div class="actions">
+          <button class="btn" type="button" data-test="chat">试一下 /v1</button>
+          <button class="btn ghost" type="button" data-test="models">拉取 /v1/models</button>
+        </div>
+
+        <div class="console" id="console" hidden>
+          <div class="console-bar">
+            <span class="status" id="status">200</span>
+            <span class="meta mono" id="meta"></span>
+          </div>
+          <pre id="out"></pre>
+        </div>
+
+        <div class="rows">
+          <div class="row">
+            <code class="path"><i>ANY</i>/v1 · /v1/chat/completions</code>
+            <button class="copy" type="button" data-copy="对不起，我们跑路啦，推荐付费站：[【castorice】](https://castorice.shop)（https://castorice.shop）">复制</button>
+            <div class="val">对不起，我们跑路啦，推荐付费站：[【castorice】](https://castorice.shop)（https://castorice.shop）</div>
+            <div class="note">OpenAI 格式；带 Anthropic 特征（x-api-key / anthropic-version / /v1/messages）时自动切到 a÷ 格式。流式（stream）也会正常收尾。</div>
+          </div>
+
+          <div class="row">
+            <code class="path"><i>GET</i>/v1/models</code>
+            <button class="copy" type="button" data-copy="对不起,我们跑路了,推荐付费站,https://castorice.shop">复制</button>
+            <ul class="chips">
+              <li>对不起</li>
+              <li>我们跑路了</li>
+              <li>推荐付费站</li>
+              <li>https://castorice.shop</li>
+            </ul>
+            <div class="note">整句按逗号切成的 4 个「模型」，客户端拉模型列表时看到的就是这几条。</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>奶酪公益站 · 已闭站</span>
+      <span class="sep">/</span>
+      <a href="https://castorice.shop" target="_blank" rel="noopener noreferrer">castorice.shop</a>
+      <span class="sep">/</span>
+      <span>愿下次相见，我们还能分你一块奶酪</span>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      var docEl = document.documentElement;
+      docEl.classList.add('js');
+
+      /* ---------- 滚动入场 ---------- */
+      var reveals = document.querySelectorAll('.reveal');
+
+      function showAll() {
+        Array.prototype.forEach.call(reveals, function (el) { el.classList.add('in'); });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        Array.prototype.forEach.call(reveals, function (el) { io.observe(el); });
+        setTimeout(showAll, 2200);
+      } else {
+        showAll();
+      }
+
+      /* ---------- 营业天数 ---------- */
+      var daysEl = document.getElementById('days');
+      if (daysEl) {
+        var start = new Date('2026-08-17T00:00:00+08:00').getTime();
+        var days = Math.floor((Date.now() - start) / 86400000);
+        daysEl.textContent = String(Math.max(0, days));
+      }
+
+      /* ---------- 复制 + 轻提示 ---------- */
+      var toastEl = document.getElementById('toast');
+      var toastTimer = null;
+
+      function toast(text) {
+        if (!toastEl) return;
+        toastEl.textContent = text;
+        toastEl.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 1700);
+      }
+
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        return ok;
+      }
+
+      function copyText(text) {
+        return new Promise(function (resolve) {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(
+              function () { resolve(true); },
+              function () { resolve(fallbackCopy(text)); }
+            );
+          } else {
+            resolve(fallbackCopy(text));
+          }
+        });
+      }
+
+      /* ---------- Base URL ---------- */
+      var baseUrlEl = document.getElementById('base-url');
+      if (baseUrlEl) {
+        var origin = location.origin;
+        baseUrlEl.textContent = (!origin || origin === 'null')
+          ? 'https://你的域名/v1'
+          : origin + '/v1';
+      }
+
+      /* ---------- 现场调接口 ---------- */
+      var consoleEl = document.getElementById('console');
+      var outEl = document.getElementById('out');
+      var statusEl = document.getElementById('status');
+      var metaEl = document.getElementById('meta');
+
+      function pretty(text) {
+        try { return JSON.stringify(JSON.parse(text), null, 2); } catch (e) { return text; }
+      }
+
+      function now() {
+        return (window.performance && performance.now) ? performance.now() : Date.now();
+      }
+
+      function setBusy(busy) {
+        Array.prototype.forEach.call(document.querySelectorAll('[data-test]'), function (el) {
+          el.disabled = busy;
+        });
+      }
+
+      document.addEventListener('click', function (event) {
+        var target = event.target;
+        if (!target || !target.closest) return;
+
+        /* 复制按钮 */
+        var copyBtn = target.closest('.copy');
+        if (copyBtn) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          var text = copyBtn.getAttribute('data-copy');
+          var targetId = copyBtn.getAttribute('data-target');
+          if (!text && targetId) {
+            var node = document.getElementById(targetId);
+            text = node ? node.textContent.trim() : '';
+          }
+          if (!text) return;
+
+          copyText(text).then(function (ok) {
+            var label = copyBtn.getAttribute('data-label') || copyBtn.textContent;
+            copyBtn.setAttribute('data-label', label);
+            copyBtn.textContent = ok ? '已复制' : '请手动复制';
+            copyBtn.classList.toggle('done', ok);
+            toast(ok ? '已复制到剪贴板' : '复制失败，请长按手动复制');
+            setTimeout(function () {
+              copyBtn.textContent = label;
+              copyBtn.classList.remove('done');
+            }, 1500);
+          });
+          return;
+        }
+
+        /* 接口试跑按钮 */
+        var testBtn = target.closest('[data-test]');
+        if (!testBtn) return;
+
+        var isModels = testBtn.getAttribute('data-test') === 'models';
+        var url = isModels ? '/v1/models' : '/v1';
+        var init = isModels
+          ? { headers: { authorization: 'Bearer sk-anything' } }
+          : {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json',
+                authorization: 'Bearer sk-anything'
+              },
+              body: JSON.stringify({
+                model: 'gpt-4o',
+                messages: [{ role: 'user', content: '你们还开着吗？' }]
+              })
+            };
+
+        setBusy(true);
+        consoleEl.hidden = false;
+        statusEl.classList.remove('err');
+        statusEl.textContent = '请求中…';
+        metaEl.textContent = url;
+        outEl.textContent = '…';
+        var started = now();
+
+        fetch(url, init)
+          .then(function (res) {
+            return res.text().then(function (text) {
+              statusEl.textContent = 'HTTP ' + res.status;
+              statusEl.classList.toggle('err', !res.ok);
+              metaEl.textContent = url + ' · ' + Math.round(now() - started) + 'ms';
+              outEl.textContent = pretty(text);
+            });
+          })
+          .catch(function (err) {
+            statusEl.textContent = '请求失败';
+            statusEl.classList.add('err');
+            metaEl.textContent = url;
+            outEl.textContent = '无法请求接口：' + (err && err.message ? err.message : err) +
+              '\n\n若是本地直接双击打开 HTML，浏览器不允许请求相对接口。\n部署到 Cloudflare Workers（或跑 npm run dev）之后再来点一次。';
+          })
+          .then(function () {
+            setBusy(false);
+          });
+      });
+    })();
+  </script>
+</body>
+</html>

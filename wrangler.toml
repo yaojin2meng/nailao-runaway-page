@@ -1,0 +1,15 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "runaway-page"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+# 静态资源（跑路页面）
+[assets]
+directory = "./public"
+binding = "ASSETS"
+# 关键：让 Worker 先接管所有请求，未命中 API 再回退到静态资源
+run_worker_first = true
+not_found_handling = "single-page-application"
+
+[observability]
+enabled = true
