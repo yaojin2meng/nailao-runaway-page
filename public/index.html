@@ -1,62 +1,188 @@
-      <!-- 默认收起的 /v1 接口说明 -->
-      <details class="api-fold">
-        <summary class="api-summary">
-          <span class="api-summary-left">还在客户端里填着本站 /v1 地址？查看接口回执说明</span>
-          <span class="api-summary-right">
-            <span class="ok-badge mono">200 OK</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-          </span>
-        </summary>
+  <script>
+    (function () {
+      var docEl = document.documentElement;
+      var metaTheme = document.getElementById('meta-theme-color');
+      var toggleBtn = document.getElementById('theme-toggle');
 
-        <div class="api-content">
-          <p class="api-desc">
-            原 <code class="mono">/v1</code> 接口暂未直接断开，统一返回 HTTP 200 跑路提示（兼容 OpenAI 与 a÷ 格式，支持流式），方便还在酒馆等客户端里挂着本站地址的宝宝直接看到通知，看到后记得换一下接口地址哦。
-          </p>
+      function isDarkNow() {
+        var attr = docEl.getAttribute('data-theme');
+        if (attr === 'dark') return true;
+        if (attr === 'light') return false;
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
 
-          <div class="api-list">
-            <div class="api-item">
-              <div class="api-route mono">
-                <span class="method">ANY</span>
-                <span>/v1 · /v1/chat/completions · /v1/messages</span>
-              </div>
-              <div class="api-return">对不起，我们跑路啦，推荐付费站：[【castorice】](https://castorice.shop)（https://castorice.shop）<br>聊天交流群[1136508519](https://qm.qq.com/q/g4RHN2DcEU)</div>
-            </div>
+      function applyTheme(dark, persist) {
+        docEl.setAttribute('data-theme', dark ? 'dark' : 'light');
+        if (metaTheme) metaTheme.setAttribute('content', dark ? '#1b0e04' : '#faf4de');
+        if (persist) {
+          try { localStorage.setItem('nailao-theme', dark ? 'dark' : 'light'); } catch (e) {}
+        }
+      }
 
-            <div class="api-item">
-              <div class="api-route mono">
-                <span class="method">GET</span>
-                <span>/v1/models</span>
-              </div>
-              <ul class="model-chips mono">
-                <li>castorice (https://castorice.shop)</li>
-              </ul>
-            </div>
-          </div>
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          applyTheme(!isDarkNow(), true);
+        });
+      }
 
-          <div class="api-actions">
-            <button class="btn-test" type="button" data-test="openai">试调 /v1 (OpenAI)</button>
-            <button class="btn-test" type="button" data-test="anthropic">试调 /v1/messages (a÷)</button>
-            <button class="btn-test" type="button" data-test="models">查看 /v1/models</button>
-          </div>
+      var toastEl = document.getElementById('toast');
+      var toastTimer = null;
 
-          <div class="console" id="console" hidden>
-            <div class="console-bar mono">
-              <span class="console-status" id="status">HTTP 200</span>
-              <span class="console-meta" id="meta"></span>
-              <button class="console-close" type="button" id="console-close">收起</button>
-            </div>
-            <pre class="mono" id="out"></pre>
-          </div>
-        </div>
-      </details>
-    </main>
+      function toast(text) {
+        if (!toastEl) return;
+        toastEl.textContent = text;
+        toastEl.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 1700);
+      }
 
-    <footer class="foot">
-      <span>@奶酪公益站 保留所有权利</span>
-      <span>推荐去处：<a href="https://castorice.shop" target="_blank" rel="noopener noreferrer">castorice.shop</a></span>
-      <span>聊天群：1136508519 · <a href="https://qm.qq.com/q/g4RHN2DcEU" target="_blank" rel="noopener noreferrer">点击加入</a></span>
-    </footer>
-  </div>
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        return ok;
+      }
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-/* __CONTINUE__ */
+      function copyText(text) {
+        return new Promise(function (resolve) {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(
+              function () { resolve(true); },
+              function () { resolve(fallbackCopy(text)); }
+            );
+          } else {
+            resolve(fallbackCopy(text));
+          }
+        });
+      }
+
+      var consoleEl = document.getElementById('console');
+      var outEl = document.getElementById('out');
+      var statusEl = document.getElementById('status');
+      var metaEl = document.getElementById('meta');
+      var closeBtn = document.getElementById('console-close');
+
+      if (closeBtn && consoleEl) {
+        closeBtn.addEventListener('click', function () {
+          consoleEl.hidden = true;
+        });
+      }
+
+      function pretty(text) {
+        try { return JSON.stringify(JSON.parse(text), null, 2); } catch (e) { return text; }
+      }
+
+      function now() {
+        return (window.performance && performance.now) ? performance.now() : Date.now();
+      }
+
+      function setBusy(busy) {
+        Array.prototype.forEach.call(document.querySelectorAll('[data-test]'), function (el) {
+          el.disabled = busy;
+        });
+      }
+
+      document.addEventListener('click', function (event) {
+        var target = event.target;
+        if (!target || !target.closest) return;
+
+        var copyBtn = target.closest('[data-copy]');
+        if (copyBtn) {
+          event.preventDefault();
+          var text = copyBtn.getAttribute('data-copy');
+          if (!text) return;
+
+          copyText(text).then(function (ok) {
+            var orig = copyBtn.getAttribute('data-orig') || copyBtn.textContent;
+            copyBtn.setAttribute('data-orig', orig);
+            copyBtn.textContent = ok ? '已复制' : '复制失败';
+            copyBtn.classList.toggle('done', ok);
+            toast(ok ? '已复制 ' + text : '复制失败，请手动复制');
+            setTimeout(function () {
+              copyBtn.textContent = orig;
+              copyBtn.classList.remove('done');
+            }, 1500);
+          });
+          return;
+        }
+
+        var testBtn = target.closest('[data-test]');
+        if (!testBtn) return;
+
+        var kind = testBtn.getAttribute('data-test');
+        var url = '/v1';
+        var init = {};
+
+        if (kind === 'models') {
+          url = '/v1/models';
+          init = { headers: { authorization: 'Bearer sk-nailao' } };
+        } else if (kind === 'anthropic') {
+          url = '/v1/messages';
+          init = {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              'x-api-key': 'sk-ant-nailao',
+              'anthropic-version': '2023-06-01'
+            },
+            body: JSON.stringify({
+              model: 'castorice (https://castorice.shop)',
+              max_tokens: 128,
+              messages: [{ role: 'user', content: '还在吗？' }]
+            })
+          };
+        } else {
+          url = '/v1';
+          init = {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              authorization: 'Bearer sk-nailao'
+            },
+            body: JSON.stringify({
+              model: 'castorice (https://castorice.shop)',
+              messages: [{ role: 'user', content: '还在吗？' }]
+            })
+          };
+        }
+
+        setBusy(true);
+        consoleEl.hidden = false;
+        statusEl.classList.remove('err');
+        statusEl.textContent = '请求中…';
+        metaEl.textContent = url;
+        outEl.textContent = '…';
+        var started = now();
+
+        fetch(url, init)
+          .then(function (res) {
+            return res.text().then(function (bodyText) {
+              statusEl.textContent = 'HTTP ' + res.status;
+              statusEl.classList.toggle('err', !res.ok);
+              metaEl.textContent = url + ' · ' + Math.round(now() - started) + 'ms';
+              outEl.textContent = pretty(bodyText);
+            });
+          })
+          .catch(function (err) {
+            statusEl.textContent = '请求未连接';
+            statusEl.classList.add('err');
+            metaEl.textContent = url;
+            outEl.textContent = '无法连接接口：' + (err && err.message ? err.message : err) +
+              '\n\n部署到 Cloudflare Workers 或运行 npm run dev 后即可在线查看真实响应。';
+          })
+          .then(function () {
+            setBusy(false);
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
