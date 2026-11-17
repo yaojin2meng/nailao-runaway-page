@@ -1,87 +1,62 @@
-    <main>
-      <!-- 闭站通知信笺 -->
-      <article class="sheet">
-        <div class="sheet-body">
-          <svg class="postmark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="2.2"/>
-            <circle cx="50" cy="50" r="38" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3.5 3.5"/>
-            <path d="M16 41h68M16 59h68" stroke="currentColor" stroke-width="1.4"/>
-            <text x="50" y="34" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing="1.5" fill="currentColor">NAILAO.BIZ</text>
-            <text x="50" y="54" text-anchor="middle" font-size="13.5" font-weight="800" letter-spacing="2" fill="currentColor">已跑路</text>
-            <text x="50" y="72" text-anchor="middle" font-size="8.5" font-weight="700" letter-spacing="0.6" fill="currentColor">2026.11.15</text>
-          </svg>
+      <!-- 默认收起的 /v1 接口说明 -->
+      <details class="api-fold">
+        <summary class="api-summary">
+          <span class="api-summary-left">还在客户端里填着本站 /v1 地址？查看接口回执说明</span>
+          <span class="api-summary-right">
+            <span class="ok-badge mono">200 OK</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </span>
+        </summary>
 
-          <div class="sheet-kicker">
-            <span class="mono">2026.08.17 开站</span>
-            <span class="sep">·</span>
-            <span class="mono">2026.11.15 关闭</span>
-            <span class="sep">·</span>
-            <span>零赞助费 · 零推广费</span>
-          </div>
-
-          <h1 class="sheet-title serif">奶酪公益站 · 跑路通知</h1>
-
-          <hr class="sheet-rule">
-
-          <div class="prose">
-            <p>对不起，我们跑路啦，推荐付费站：<a class="inline-link" href="https://castorice.shop" target="_blank" rel="noopener noreferrer">【castorice】</a>（<a class="inline-link" href="https://castorice.shop" target="_blank" rel="noopener noreferrer">https://castorice.shop</a>）</p>
-            <p>聊天交流群<a class="inline-link" href="https://qm.qq.com/q/g4RHN2DcEU" target="_blank" rel="noopener noreferrer">1136508519</a></p>
-          </div>
-        </div>
-
-        <!-- 推荐付费站（合为一个模型） -->
-        <aside class="note-card" aria-label="后续去处推荐">
-          <div class="note-head">
-            <span class="note-title">P.S. 关于后续去处</span>
-            <span class="note-tag">付费站推荐</span>
-          </div>
-          <p class="note-text">
-            如果还需要找地方继续用，推荐去付费站 <strong>castorice</strong>（本站所有推荐站均已合为这个模型）。
+        <div class="api-content">
+          <p class="api-desc">
+            原 <code class="mono">/v1</code> 接口暂未直接断开，统一返回 HTTP 200 跑路提示（兼容 OpenAI 与 a÷ 格式，支持流式），方便还在酒馆等客户端里挂着本站地址的宝宝直接看到通知，看到后记得换一下接口地址哦。
           </p>
-          <div class="note-cta">
-            <div class="site-meta">
-              <span class="site-name">castorice</span>
-              <div class="site-url-row">
-                <span class="site-url mono">https://castorice.shop</span>
-                <button class="copy-chip" type="button" data-copy="https://castorice.shop">复制网址</button>
-              </div>
-            </div>
-            <a class="btn-go" href="https://castorice.shop" target="_blank" rel="noopener noreferrer">
-              <span>前往 castorice</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
-            </a>
-          </div>
-        </aside>
-      </article>
 
-      <!-- 聊天交流群 -->
-      <aside class="note-card group-card" aria-label="聊天交流群">
-        <div class="note-head">
-          <span class="note-title">聊天群：1136508519</span>
-          <span class="note-tag">点击加入</span>
-        </div>
-        <p class="note-text">
-          有问题、想吐槽或者想找人一起聊聊，都可以进群。点击下方按钮加入，也可以直接扫码入群。
-        </p>
-        <div class="group-cta">
-          <div class="group-qr">
-            <img src="https://img.miku.ren/uploads/20261117/c42c1bb724e138aca6e86fc8e6ec1c30.jpg" alt="扫码入群" loading="lazy" decoding="async">
-            <span class="group-qr-tip">扫码入群</span>
-          </div>
-          <div class="group-actions">
-            <a class="btn-go" href="https://qm.qq.com/q/g4RHN2DcEU" target="_blank" rel="noopener noreferrer">
-              <span>点击加入（1136508519）</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
-            </a>
-            <div class="site-url-row">
-              <span class="site-url mono">https://qm.qq.com/q/g4RHN2DcEU</span>
-              <button class="copy-chip" type="button" data-copy="https://qm.qq.com/q/g4RHN2DcEU">复制链接</button>
+          <div class="api-list">
+            <div class="api-item">
+              <div class="api-route mono">
+                <span class="method">ANY</span>
+                <span>/v1 · /v1/chat/completions · /v1/messages</span>
+              </div>
+              <div class="api-return">对不起，我们跑路啦，推荐付费站：[【castorice】](https://castorice.shop)（https://castorice.shop）<br>聊天交流群[1136508519](https://qm.qq.com/q/g4RHN2DcEU)</div>
             </div>
-            <div class="site-url-row">
-              <span class="site-url mono">群号 1136508519</span>
-              <button class="copy-chip" type="button" data-copy="1136508519">复制群号</button>
+
+            <div class="api-item">
+              <div class="api-route mono">
+                <span class="method">GET</span>
+                <span>/v1/models</span>
+              </div>
+              <ul class="model-chips mono">
+                <li>castorice (https://castorice.shop)</li>
+              </ul>
             </div>
           </div>
+
+          <div class="api-actions">
+            <button class="btn-test" type="button" data-test="openai">试调 /v1 (OpenAI)</button>
+            <button class="btn-test" type="button" data-test="anthropic">试调 /v1/messages (a÷)</button>
+            <button class="btn-test" type="button" data-test="models">查看 /v1/models</button>
+          </div>
+
+          <div class="console" id="console" hidden>
+            <div class="console-bar mono">
+              <span class="console-status" id="status">HTTP 200</span>
+              <span class="console-meta" id="meta"></span>
+              <button class="console-close" type="button" id="console-close">收起</button>
+            </div>
+            <pre class="mono" id="out"></pre>
+          </div>
         </div>
-      </aside>
+      </details>
+    </main>
+
+    <footer class="foot">
+      <span>@奶酪公益站 保留所有权利</span>
+      <span>推荐去处：<a href="https://castorice.shop" target="_blank" rel="noopener noreferrer">castorice.shop</a></span>
+      <span>聊天群：1136508519 · <a href="https://qm.qq.com/q/g4RHN2DcEU" target="_blank" rel="noopener noreferrer">点击加入</a></span>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 /* __CONTINUE__ */
