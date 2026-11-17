@@ -1,162 +1,106 @@
-  .api-content {
-    padding: 4px 20px 20px;
-    border-top: 1px dashed var(--border);
-  }
-
-  .api-desc {
-    margin-top: 12px;
-    font-size: 13.5px;
-    line-height: 1.76;
-    color: var(--muted-fg);
-  }
-
-  .api-list {
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-  }
-
-  .api-item {
-    padding: 11px 13px;
-    background: var(--surface-subtle);
-    border: 1px solid var(--border);
-    border-radius: 11px;
-  }
-
-  .api-route {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    flex-wrap: wrap;
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--fg);
-  }
-
-  .method {
-    padding: 1px 6px;
-    font-size: 10.5px;
-    font-weight: 700;
-    color: var(--muted-fg);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-  }
-
-  .api-return {
-    margin-top: 6px;
-    font-size: 12.5px;
-    line-height: 1.65;
-    color: var(--fg-body);
-    word-break: break-word;
-  }
-
-  .model-chips {
-    margin-top: 7px;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .model-chips li {
-    padding: 2px 9px;
-    font-size: 12px;
-    color: var(--fg);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    word-break: break-all;
-  }
-
-  .api-actions {
-    margin-top: 13px;
+  /* ========== 页脚 ========== */
+  .foot {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
-  }
-
-  .btn-test {
-    padding: 6px 12px;
+    justify-content: space-between;
+    gap: 8px 16px;
+    padding: 18px 2px 28px;
     font-size: 12.5px;
-    font-weight: 600;
-    color: var(--fg-body);
-    background: var(--surface-subtle);
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    cursor: pointer;
-    transition: color 0.16s, border-color 0.16s, background-color 0.16s;
+    color: var(--muted-fg);
   }
 
-  .btn-test:hover {
+  .foot a {
+    border-bottom: 1px dashed var(--border-strong);
+    transition: color 0.16s, border-color 0.16s;
+  }
+
+  .foot a:hover {
     color: var(--fg);
     border-color: var(--primary);
-    background: var(--surface-note);
   }
 
-  .btn-test[disabled] {
-    opacity: 0.55;
-    cursor: progress;
-  }
-
-  /* 终端输出预览 */
-  .console {
-    margin-top: 12px;
-    border-radius: 11px;
-    overflow: hidden;
-    background: var(--term-bg);
-    border: 1px solid var(--term-border);
-  }
-
-  .console[hidden] { display: none; }
-
-  .console-bar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 7px 12px;
-    background: rgba(255, 255, 255, 0.04);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 11.5px;
-  }
-
-  .console-status {
+  /* ========== 轻提示 ========== */
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 26px;
+    z-index: 30;
+    transform: translate(-50%, 12px);
+    padding: 8px 16px;
+    font-size: 13px;
     font-weight: 700;
-    color: #93e4b4;
+    color: var(--primary-fg);
+    background: var(--primary);
+    border-radius: 999px;
+    box-shadow: var(--shadow-sheet);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.22s ease;
   }
 
-  .console-status.err { color: #ff9a8f; }
-
-  .console-meta {
-    color: rgba(246, 234, 209, 0.58);
-    font-size: 11px;
+  .toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 
-  .console-close {
-    margin-left: auto;
-    padding: 1px 7px;
-    font-size: 11px;
-    color: rgba(246, 234, 209, 0.72);
-    border: 1px solid rgba(246, 234, 209, 0.18);
-    border-radius: 5px;
-    cursor: pointer;
+  /* ========== 响应式 ========== */
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px; }
+    .topbar { padding: 16px 0 14px; }
+    .sheet-body { padding: 24px 20px 22px; }
+    .postmark { width: 68px; height: 68px; top: 16px; right: 16px; }
+    .sheet-title { padding-right: 52px; }
+    .prose { font-size: 15px; gap: 14px; }
+    .note-card { margin: 0 14px 16px; padding: 16px; }
+    .group-card { margin: 0 14px 16px; }
+    .group-cta { gap: 12px; }
+    .group-qr { margin: 0 auto; }
+    .group-qr img { width: 116px; height: 116px; }
+    .group-actions { min-width: 100%; align-items: stretch; }
+    .group-actions .btn-go { width: 100%; }
+    .note-cta .btn-go { width: 100%; }
+    .api-summary { padding: 13px 16px; }
+    .api-content { padding: 4px 16px 16px; }
+    .foot { justify-content: center; text-align: center; padding: 16px 0 24px; }
   }
 
-  .console-close:hover {
-    color: #fff;
-    border-color: rgba(246, 234, 209, 0.42);
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
   }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="奶酪公益站">
+        <img class="brand-logo" src="/logo.png" alt="奶酪公益站" width="36" height="36" decoding="async">
+        <div class="brand-info">
+          <div class="brand-row">
+            <span>奶酪公益站</span>
+            <span class="closed-pill"><span class="closed-dot"></span>已跑路</span>
+          </div>
+          <span class="brand-domain mono">nailao.biz</span>
+        </div>
+      </a>
 
-  .console pre {
-    max-height: 230px;
-    overflow: auto;
-    padding: 12px 14px;
-    font-size: 12px;
-    line-height: 1.68;
-    color: var(--term-fg);
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
+      <div class="topbar-actions">
+        <button class="icon-btn" type="button" id="theme-toggle" aria-label="切换深浅色主题" title="切换深浅色">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+          </svg>
+        </button>
+
+        <a class="nav-jump" href="https://castorice.shop" target="_blank" rel="noopener noreferrer">
+          <span>castorice</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </header>
 /* __CONTINUE__ */
