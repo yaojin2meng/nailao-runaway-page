@@ -1,31 +1,54 @@
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+/**
+ * 奶酪公益站 · 闭站通知 & /v1 告别回执 Worker
+ *
+ * 行为约定（全部返回 HTTP 200，不校验任何 key）：
+ *   - ANY  /v1                     -> OpenAI 格式 200；若请求带 Anthropic 特征则返回 a÷(Anthropic) 格式 200
+ *   - POST /v1/chat/completions    -> OpenAI Chat Completions 200（支持 stream）
+ *   - POST /v1/completions         -> OpenAI Legacy Completions 200（支持 stream）
+ *   - POST /v1/responses           -> OpenAI Responses API 200（支持 stream）
+ *   - POST /v1/messages            -> Anthropic Messages 200（支持 stream）
+ *   - POST /v1/complete            -> Anthropic Legacy Complete 200
+ *   - GET  /v1/models              -> 返回单个「模型」：castorice（推荐付费站）
+ *   - GET  /v1/models/{id}         -> 单个模型详情 200
+ *   - 其余路径                      -> 静态资源（奶酪公益站同风格闭站通知页）
+ */
 
-    // 探活
-    if (url.pathname === '/health' || url.pathname === '/healthz' || url.pathname === '/ping') {
-      return json({
-        status: 'ok',
-        closed: true,
-        message: RUNAWAY_TEXT,
-        models: RUNAWAY_MODELS,
-      });
-    }
+// ---------------- 文案配置（要改就改这几行） ----------------
 
-    const apiResponse = await handleApi(request, url);
-    if (apiResponse) return apiResponse;
+/** 调用 /v1 时返回的正文 */
+const RUNAWAY_TEXT =
+  '对不起，我们跑路啦，推荐付费站：[【castorice】](https://castorice.shop)（https://castorice.shop）\n' +
+  '聊天交流群[1136508519](https://qm.qq.com/q/g4RHN2DcEU)';
 
-    // 其它请求交给静态资源（闭站通知页）
-    if (env && env.ASSETS) {
-      return env.ASSETS.fetch(request);
-    }
+/**
+ * /v1/models 里暴露的模型 id 列表。
+ * 所有推荐付费站合为一个模型 —— castorice（https://castorice.shop）
+ */
+const RUNAWAY_MODELS = ['castorice (https://castorice.shop)'];
 
-    return new Response(
-      `<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>奶酪公益站 · 闭站通知</title>` +
-        `<body style="font-family:system-ui;background:#faf4de;color:#311911;padding:48px;line-height:1.7">` +
-        `<h1>奶酪公益站 · 闭站通知</h1><p>对不起，我们跑路啦，推荐付费站：<a href="https://castorice.shop">【castorice】（https://castorice.shop）</a></p>` +
-        `<p>聊天交流群 <a href="https://qm.qq.com/q/g4RHN2DcEU">1136508519</a></p></body></html>`,
-      { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', ...CORS_HEADERS } },
-    );
-  },
+/** 请求体没带 model 时回填的默认值 */
+const RUNAWAY_MODEL = RUNAWAY_MODELS[0];
+
+// ----------------------------------------------------
+
+const CORS_HEADERS = {
+  'access-control-allow-origin': '*',
+  'access-control-allow-methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD',
+  'access-control-allow-headers': '*',
+  'access-control-expose-headers': '*',
+  'access-control-max-age': '86400',
+};
+
+const JSON_HEADERS = {
+  'content-type': 'application/json; charset=utf-8',
+  'cache-control': 'no-store',
+  ...CORS_HEADERS,
+};
+
+const SSE_HEADERS = {
+  'content-type': 'text/event-stream; charset=utf-8',
+  'cache-control': 'no-store',
+  connection: 'keep-alive',
+  'x-accel-buffering': 'no',
+  ...CORS_HEADERS,
 };
