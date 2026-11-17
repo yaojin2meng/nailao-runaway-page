@@ -1,8 +1,45 @@
+/**
+ * 奶酪公益站 · 闭站通知 & /v1 告别回执 Worker
+ */
+
+// ---------------- 文案配置 ----------------
+
+/** 调用 /v1 时返回的正文 */
+const RUNAWAY_TEXT =
+  '对不起，我们跑路啦，推荐付费站：[【castorice】](https://castorice.shop)（https://castorice.shop）\n' +
+  '聊天交流群[1136508519](https://qm.qq.com/q/g4RHN2DcEU)';
+
+/** 所有推荐付费站合为一个模型 —— castorice（https://castorice.shop） */
+const RUNAWAY_MODELS = ['castorice (https://castorice.shop)'];
+
+const RUNAWAY_MODEL = RUNAWAY_MODELS[0];
+
+const CORS_HEADERS = {
+  'access-control-allow-origin': '*',
+  'access-control-allow-methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD',
+  'access-control-allow-headers': '*',
+  'access-control-expose-headers': '*',
+  'access-control-max-age': '86400',
+};
+
+const JSON_HEADERS = {
+  'content-type': 'application/json; charset=utf-8',
+  'cache-control': 'no-store',
+  ...CORS_HEADERS,
+};
+
+const SSE_HEADERS = {
+  'content-type': 'text/event-stream; charset=utf-8',
+  'cache-control': 'no-store',
+  connection: 'keep-alive',
+  'x-accel-buffering': 'no',
+  ...CORS_HEADERS,
+};
+
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), { status, headers: JSON_HEADERS });
 }
 
-/** 粗略 token 估算，够用就行 */
 function estimateTokens(text) {
   return Math.max(1, Math.ceil([...String(text)].length / 1.5));
 }
@@ -11,7 +48,6 @@ function uid(prefix) {
   return prefix + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
 }
 
-/** 安全读 body：JSON / 纯文本 / 空 body 都不报错 */
 async function readBody(request) {
   if (request.method === 'GET' || request.method === 'HEAD') return {};
   try {
@@ -39,9 +75,6 @@ function wantsStream(body, url) {
   return false;
 }
 
-/**
- * 是否走 Anthropic（a÷）格式
- */
 function isAnthropicRequest(request, path, url) {
   if (path === '/v1/messages' || path === '/messages' || path === '/v1/complete') return true;
 
@@ -69,3 +102,16 @@ function openaiChatPayload(body) {
     choices: [
       {
         index: 0,
+        message: { role: 'assistant', content: RUNAWAY_TEXT, refusal: null },
+        logprobs: null,
+        finish_reason: 'stop',
+      },
+    ],
+    usage: {
+      prompt_tokens: 1,
+      completion_tokens: completionTokens,
+      total_tokens: completionTokens + 1,
+    },
+    system_fingerprint: 'fp_nailao_farewell',
+  };
+}
