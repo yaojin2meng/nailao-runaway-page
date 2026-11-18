@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>奶酪公益站 · 闭站通知</title>
-<meta name="description" content="奶酪公益站跑路通知。对不起，我们跑路啦，推荐付费站 castorice（https://castorice.shop），聊天交流群 1136508519。">
+<meta name="description" content="奶酪公益站闭站通知。要和各位宝宝说再见啦，后续推荐前往朋友开的付费站 castorice（https://castorice.shop）。">
 <meta name="robots" content="noindex,nofollow">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#faf4de" id="meta-theme-color">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="奶酪公益站">
 <meta property="og:title" content="奶酪公益站 · 闭站通知">
-<meta property="og:description" content="对不起，我们跑路啦，推荐付费站：castorice（https://castorice.shop）。聊天交流群 1136508519。">
+<meta property="og:description" content="要和各位宝宝说再见啦。推荐付费站：castorice（https://castorice.shop）。">
 <meta property="og:image" content="/logo.png">
 <link rel="icon" type="image/png" href="/logo.png">
 <link rel="apple-touch-icon" href="/logo.png">
@@ -441,6 +441,54 @@
     color: var(--muted-fg);
   }
 
+  /* ========== 聊天群卡片 ========== */
+  .group-card {
+    margin: 0 20px 20px;
+  }
+
+  .group-cta {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-strong);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .group-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex: none;
+  }
+
+  .group-qr img {
+    width: 132px;
+    height: 132px;
+    object-fit: contain;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 5px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .group-qr-tip {
+    font-size: 11.5px;
+    color: var(--muted-fg);
+  }
+
+  .group-actions {
+    flex: 1;
+    min-width: 210px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    align-items: flex-start;
+  }
+
   /* ========== 信末附言便签（推荐朋友的付费站） ========== */
   .note-card {
     margin: 0 20px 20px;
@@ -576,65 +624,6 @@
     width: 14px;
     height: 14px;
     flex: none;
-  }
-
-  /* ========== 聊天群卡片 ========== */
-  .inline-link {
-    color: var(--fg);
-    font-weight: 700;
-    border-bottom: 1px dashed var(--border-strong);
-    transition: border-color 0.16s, color 0.16s;
-  }
-
-  .inline-link:hover {
-    border-color: var(--primary);
-  }
-
-  .group-card {
-    margin: 0 20px 20px;
-  }
-
-  .group-cta {
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px dashed var(--border-strong);
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .group-qr {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    flex: none;
-  }
-
-  .group-qr img {
-    width: 132px;
-    height: 132px;
-    object-fit: contain;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 5px;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .group-qr-tip {
-    font-size: 11.5px;
-    color: var(--muted-fg);
-  }
-
-  .group-actions {
-    flex: 1;
-    min-width: 210px;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    align-items: flex-start;
   }
 
   /* ========== 默认折叠的 /v1 接口回执说明 ========== */
@@ -999,8 +988,10 @@
           <hr class="sheet-rule">
 
           <div class="prose">
-            <p>对不起，我们跑路啦，推荐付费站：<a class="inline-link" href="https://castorice.shop" target="_blank" rel="noopener noreferrer">【castorice】（https://castorice.shop）</a></p>
-            <p>聊天交流群<a class="inline-link" href="https://qm.qq.com/q/g4RHN2DcEU" target="_blank" rel="noopener noreferrer">1136508519</a></p>
+            <p>要和各位宝宝说再见啦，虽然很不舍，但是奶酪公益站还是跑路了。不知道你是在哪遇见我们的呢？</p>
+            <p>其实我们的离开在开站之时便已注定，奶酪目前没有收取过一分钱的赞助费、也没有通过商业推广获取过任何推广费用与利润，严重的收支不平衡，导致了我们最终的结果。当然这不是卖惨，也不是求赞助，我们始终认为，如果收费便违背了我们一开始成立的初衷。</p>
+            <p>这一路走来我们遭遇了许多的问题，曾短暂闭站过，也曾真正做到几乎不限量使用。随着人数的增加，注册的门槛也随之提高。我们做了很多草台班子的事情，为了收拾这些烂摊子也成长了许多。</p>
+            <p>总之再见啦，或许有一日我们会再相见，希望那天各位宝宝还会选择奶酪公益站。</p>
           </div>
 
           <div class="signoff">
@@ -1035,38 +1026,38 @@
             </a>
           </div>
         </aside>
-      </article>
 
-      <!-- 聊天交流群 -->
-      <aside class="note-card group-card" aria-label="聊天交流群">
-        <div class="note-head">
-          <span class="note-title">聊天群：1136508519</span>
-          <span class="note-tag">点击加入</span>
-        </div>
-        <p class="note-text">
-          有问题、想吐槽或者想找人一起聊聊，都可以进群。点击下方按钮加入，也可以直接扫码入群。
-        </p>
-        <div class="group-cta">
-          <div class="group-qr">
-            <img src="https://img.miku.ren/uploads/20261117/c42c1bb724e138aca6e86fc8e6ec1c30.jpg" alt="扫码入群" loading="lazy" decoding="async">
-            <span class="group-qr-tip">扫码入群</span>
+        <!-- 聊天交流群 -->
+        <aside class="note-card group-card" aria-label="聊天交流群">
+          <div class="note-head">
+            <span class="note-title">聊天群：1136508519</span>
+            <span class="note-tag">点击加入</span>
           </div>
-          <div class="group-actions">
-            <a class="btn-go" href="https://qm.qq.com/q/g4RHN2DcEU" target="_blank" rel="noopener noreferrer">
-              <span>点击加入（1136508519）</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
-            </a>
-            <div class="site-url-row">
-              <span class="site-url mono">https://qm.qq.com/q/g4RHN2DcEU</span>
-              <button class="copy-chip" type="button" data-copy="https://qm.qq.com/q/g4RHN2DcEU">复制链接</button>
+          <p class="note-text">
+            有问题、想吐槽或者想找人一起聊聊，都可以进群。点击下方按钮加入，也可以直接扫码入群。
+          </p>
+          <div class="group-cta">
+            <div class="group-qr">
+              <img src="https://img.miku.ren/uploads/20261117/c42c1bb724e138aca6e86fc8e6ec1c30.jpg" alt="扫码入群" loading="lazy" decoding="async">
+              <span class="group-qr-tip">扫码入群</span>
             </div>
-            <div class="site-url-row">
-              <span class="site-url mono">群号 1136508519</span>
-              <button class="copy-chip" type="button" data-copy="1136508519">复制群号</button>
+            <div class="group-actions">
+              <a class="btn-go" href="https://qm.qq.com/q/g4RHN2DcEU" target="_blank" rel="noopener noreferrer">
+                <span>点击加入（1136508519）</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+              </a>
+              <div class="site-url-row">
+                <span class="site-url mono">https://qm.qq.com/q/g4RHN2DcEU</span>
+                <button class="copy-chip" type="button" data-copy="https://qm.qq.com/q/g4RHN2DcEU">复制链接</button>
+              </div>
+              <div class="site-url-row">
+                <span class="site-url mono">群号 1136508519</span>
+                <button class="copy-chip" type="button" data-copy="1136508519">复制群号</button>
+              </div>
             </div>
           </div>
-        </div>
-      </aside>
+        </aside>
+      </article>
 
       <!-- 默认收起的 /v1 接口说明 -->
       <details class="api-fold">
@@ -1098,10 +1089,7 @@
                 <span>/v1/models</span>
               </div>
               <ul class="model-chips mono">
-                <li>对不起</li>
-                <li>我们跑路啦</li>
-                <li>推荐付费站：https://castorice.shop</li>
-                <li>聊天交流群：1136508519</li>
+                <li>castorice (https://castorice.shop)</li>
               </ul>
             </div>
           </div>

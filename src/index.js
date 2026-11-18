@@ -8,7 +8,7 @@
  *   - POST /v1/responses           -> OpenAI Responses API 200（支持 stream）
  *   - POST /v1/messages            -> Anthropic Messages 200（支持 stream）
  *   - POST /v1/complete            -> Anthropic Legacy Complete 200
- *   - GET  /v1/models              -> 返回合并后的单个「模型」：castorice（推荐付费站）
+ *   - GET  /v1/models              -> 把那句话按逗号切成多个「模型」返回（4 个）
  *   - GET  /v1/models/{id}         -> 单个模型详情 200
  *   - 其余路径                      -> 静态资源（奶酪公益站同风格闭站通知页）
  */
@@ -20,10 +20,7 @@ const RUNAWAY_TEXT =
   '对不起，我们跑路啦，推荐付费站：[【castorice】](https://castorice.shop)（https://castorice.shop）\n' +
   '聊天交流群[1136508519](https://qm.qq.com/q/g4RHN2DcEU)';
 
-/**
- * /v1/models 里暴露的模型 id 列表。
- * 按要求：所有推荐付费站合为一个模型 —— castorice（https://castorice.shop）
- */
+/** 推荐付费站合为一个模型：castorice（https://castorice.shop） */
 const RUNAWAY_MODELS = ['castorice (https://castorice.shop)'];
 
 /** 请求体没带 model 时回填的默认值 */
@@ -488,8 +485,7 @@ export default {
     return new Response(
       `<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>奶酪公益站 · 闭站通知</title>` +
         `<body style="font-family:system-ui;background:#faf4de;color:#311911;padding:48px;line-height:1.7">` +
-        `<h1>奶酪公益站 · 闭站通知</h1><p>对不起，我们跑路啦，推荐付费站：<a href="https://castorice.shop">【castorice】（https://castorice.shop）</a></p>` +
-        `<p>聊天交流群 <a href="https://qm.qq.com/q/g4RHN2DcEU">1136508519</a></p></body></html>`,
+        `<h1>奶酪公益站 · 闭站通知</h1><p>${RUNAWAY_TEXT}</p></body></html>`,
       { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', ...CORS_HEADERS } },
     );
   },
